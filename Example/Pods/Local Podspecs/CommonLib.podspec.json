@@ -1,0 +1,64 @@
+{
+  "name": "CommonLib",
+  "version": "0.1.1",
+  "summary": "CommonLib by all project",
+  "description": "                   CommonLib by all project,desc\n",
+  "homepage": "https://bitbucket.org/zgy_mail/specs/overview",
+  "license": "MIT",
+  "authors": {
+    "zgy_mail": "zgy_mail@126.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://zgy_mail@bitbucket.org/zgy_mail/commonlib.git",
+    "tag": "0.1.1"
+  },
+  "requires_arc": true,
+  "subspecs": [
+    {
+      "name": "Base",
+      "frameworks": [
+        "UIKit",
+        "Foundation",
+        "CoreGraphics"
+      ],
+      "libraries": [
+        "z",
+        "xml2"
+      ],
+      "source_files": [
+        "Base/*.{h,m,mm}",
+        "Base/**/*.{h,m,mm}"
+      ],
+      "dependencies": {
+        "ZipArchive": [
+          "~> 1.4.0"
+        ],
+        "ProtocolBuffers": [
+          "~> 1.9.7"
+        ],
+        "Reachability": [
+
+        ],
+        "AFNetworking": [
+          "~>2.5.4"
+        ],
+        "KeychainItemWrapper": [
+          "~> 1.2"
+        ]
+      }
+    },
+    {
+      "name": "SpriteKit",
+      "frameworks": "SpriteKit",
+      "dependencies": {
+        "CommonLib/Base": [
+
+        ]
+      },
+      "source_files": "SpriteKit/*.{h,m,mm}"
+    }
+  ]
+}

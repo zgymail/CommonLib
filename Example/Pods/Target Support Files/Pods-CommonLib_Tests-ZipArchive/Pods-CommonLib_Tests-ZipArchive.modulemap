@@ -1,0 +1,6 @@
+framework module ZipArchive {
+  umbrella header "Pods-CommonLib_Tests-ZipArchive-umbrella.h"
+
+  export *
+  module * { export * }
+}

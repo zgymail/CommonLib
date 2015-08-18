@@ -1,0 +1,6 @@
+framework module KeychainItemWrapper {
+  umbrella header "Pods-CommonLib_Tests-KeychainItemWrapper-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,9 @@
+#include "Pods-CommonLib_Tests-ZipArchive.xcconfig"
+CONFIGURATION_BUILD_DIR = $PODS_FRAMEWORK_BUILD_PATH
+FRAMEWORK_SEARCH_PATHS = "$PODS_FRAMEWORK_BUILD_PATH"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/ZipArchive" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/CommonLib" "${PODS_ROOT}/Headers/Public/KeychainItemWrapper" "${PODS_ROOT}/Headers/Public/ProtocolBuffers" "${PODS_ROOT}/Headers/Public/ProtocolBuffers/ProtocolBuffers" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/ZipArchive"
+OTHER_LDFLAGS = ${PODS_COMMONLIB_TESTS_ZIPARCHIVE_OTHER_LDFLAGS} -ObjC
+PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-CommonLib_Tests
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

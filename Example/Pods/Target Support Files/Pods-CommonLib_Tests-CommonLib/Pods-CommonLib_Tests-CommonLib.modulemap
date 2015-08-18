@@ -1,0 +1,6 @@
+framework module CommonLib {
+  umbrella header "Pods-CommonLib_Tests-CommonLib-umbrella.h"
+
+  export *
+  module * { export * }
+}
