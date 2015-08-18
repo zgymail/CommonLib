@@ -1,9 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
+target 'CommonLib_Example', :exclusive => true do
+  pod "CommonLib", :path => "../"
+end
 
-target 'commonlib_Tests', :exclusive => true do
-  pod "commonlib", :path => "../"
+target 'CommonLib_Tests', :exclusive => true do
+  pod "CommonLib", :path => "../"
 
   
 end

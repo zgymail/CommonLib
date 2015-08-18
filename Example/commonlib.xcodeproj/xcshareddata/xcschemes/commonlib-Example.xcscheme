@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6003F589195388D20070C39A"
-               BuildableName = "commonlib_Example.app"
-               BlueprintName = "commonlib_Example"
-               ReferencedContainer = "container:commonlib.xcodeproj">
+               BuildableName = "CommonLib_Example.app"
+               BlueprintName = "CommonLib_Example"
+               ReferencedContainer = "container:CommonLib.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6003F5AD195388D20070C39A"
-               BuildableName = "commonlib_Tests.xctest"
-               BlueprintName = "commonlib_Tests"
-               ReferencedContainer = "container:commonlib.xcodeproj">
+               BuildableName = "CommonLib_Tests.xctest"
+               BlueprintName = "CommonLib_Tests"
+               ReferencedContainer = "container:CommonLib.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "commonlib_Example.app"
-            BlueprintName = "commonlib_Example"
-            ReferencedContainer = "container:commonlib.xcodeproj">
+            BuildableName = "CommonLib_Example.app"
+            BlueprintName = "CommonLib_Example"
+            ReferencedContainer = "container:CommonLib.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "commonlib_Example.app"
-            BlueprintName = "commonlib_Example"
-            ReferencedContainer = "container:commonlib.xcodeproj">
+            BuildableName = "CommonLib_Example.app"
+            BlueprintName = "CommonLib_Example"
+            ReferencedContainer = "container:CommonLib.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "commonlib_Example.app"
-            BlueprintName = "commonlib_Example"
-            ReferencedContainer = "container:commonlib.xcodeproj">
+            BuildableName = "CommonLib_Example.app"
+            BlueprintName = "CommonLib_Example"
+            ReferencedContainer = "container:CommonLib.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1,40 +1,32 @@
-#
-# Be sure to run `pod lib lint commonlib.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = "commonlib"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of commonlib."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
-                       DESC
-
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/commonlib"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
-  s.author           = { "zgy_mail" => "zgy_mail@126.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/commonlib.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.platform     = :ios, '7.0'
+  s.name         = "CommonLib"
+  s.version      = "0.1.3"
+  s.summary      = "CommonLib by all project"
+  s.description  = <<-DESC
+                   CommonLib by all project,desc
+                   DESC
+  s.homepage     = "http://www.baidu.cn"
+  s.license      = "MIT"
+  s.author             = { "zgy_mail" => "zgy_mail@126.com" }
+  s.platform     = :ios, "7.0"
+  s.source       = { :git => 'https://code.csdn.net/zgy_mail/commonlib.git', :tag => "v#{s.version}" }
   s.requires_arc = true
+  s.subspec 'Base' do |ds|
+    ds.frameworks = "UIKit", "Foundation","CoreGraphics"
+    ds.libraries = "z", "xml2"
+    ds.source_files = "Base/*.{h,m,mm}","Base/**/*.{h,m,mm}"
+    ds.dependency "ZipArchive", "~> 1.4.0"
+    ds.dependency "ProtocolBuffers", "~> 1.9.7"
+    ds.dependency "Reachability"
+    ds.dependency "AFNetworking","~>2.5.4"
+    ds.dependency "KeychainItemWrapper","~> 1.2"
+  end
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'commonlib' => ['Pod/Assets/*.png']
-  }
+  s.subspec 'SpriteKit' do |ds|
+    ds.framework = "SpriteKit"
+    ds.dependency "CommonLib/Base"
+    ds.source_files ="SpriteKit/*.{h,m,mm}"
+  end
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 end

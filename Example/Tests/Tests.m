@@ -1,8 +1,8 @@
 //
-//  commonlibTests.m
-//  commonlibTests
+//  CommonLibTests.m
+//  CommonLibTests
 //
-//  Created by zgy_mail on 08/18/2015.
+//  Created by zgy_mail on 08/16/2015.
 //  Copyright (c) 2015 zgy_mail. All rights reserved.
 //
 
