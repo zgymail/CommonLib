@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.author             = {'zgy_mail' => 'zgy_mail@126.com' }
   s.platform     = :ios,'7.0'
-  s.source       =  { :git => 'https://code.csdn.net/zgy_mail/commonlib.git', :tag => '0.1.5' }
+  s.source       =  { :git => 'https://github.com/zgymail/CommonLib.git', :tag => '0.1.5' }
   s.requires_arc = true
   s.subspec 'Base' do |ds|
     ds.frameworks = 'UIKit', 'Foundation','CoreGraphics'
