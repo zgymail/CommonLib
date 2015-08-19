@@ -20,16 +20,16 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CommonLib (0.1.1):
-    - CommonLib/Base (= 0.1.1)
-    - CommonLib/SpriteKit (= 0.1.1)
-  - CommonLib/Base (0.1.1):
+  - CommonLib (0.2.0):
+    - CommonLib/Base (= 0.2.0)
+    - CommonLib/SpriteKit (= 0.2.0)
+  - CommonLib/Base (0.2.0):
     - AFNetworking (~> 2.5.4)
     - KeychainItemWrapper (~> 1.2)
     - ProtocolBuffers (~> 1.9.7)
     - Reachability
     - ZipArchive (~> 1.4.0)
-  - CommonLib/SpriteKit (0.1.1):
+  - CommonLib/SpriteKit (0.2.0):
     - CommonLib/Base
   - KeychainItemWrapper (1.2)
   - ProtocolBuffers (1.9.8)
@@ -45,7 +45,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  CommonLib: c92426f9d5191d6b530f79628dc8bb7b71289382
+  CommonLib: 53190db606e577e6cda88c16b7dab3613234da33
   KeychainItemWrapper: 67a240172ed669842bc6bc13ed554dcd50469fa2
   ProtocolBuffers: 9a4a171c0c7cc8f21dd29aeca4f9ac775d84a880
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

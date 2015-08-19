@@ -15,6 +15,7 @@
 #import "SyncService.h"
 #import "SynthesizeSingleton.h"
 #import "UIAlertView+Dismiss.h"
+#import "UIAlertView+Helper.h"
 #import "UIBezierPath+Extensions.h"
 #import "UIColor+DSColor.h"
 #import "UIImage+Extensions.h"

@@ -1,9 +1,9 @@
 {
   "name": "CommonLib",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "summary": "CommonLib by all project",
   "description": "                   CommonLib by all project,desc\n",
-  "homepage": "https://bitbucket.org/zgy_mail/specs/overview",
+  "homepage": "http://www.baidu.cn",
   "license": "MIT",
   "authors": {
     "zgy_mail": "zgy_mail@126.com"
@@ -12,8 +12,8 @@
     "ios": "7.0"
   },
   "source": {
-    "git": "https://zgy_mail@bitbucket.org/zgy_mail/commonlib.git",
-    "tag": "0.1.1"
+    "git": "https://github.com/zgymail/CommonLib.git",
+    "tag": "0.2.0"
   },
   "requires_arc": true,
   "subspecs": [
