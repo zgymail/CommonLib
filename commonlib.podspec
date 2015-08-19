@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'CommonLib'
-  s.version      = '0.2.1'
+  s.version      = '0.2.2'
   s.summary      = 'CommonLib by all project'
   s.description  = <<-DESC
                    CommonLib by all project,desc
@@ -12,19 +12,19 @@ Pod::Spec.new do |s|
   s.source       =  { :git => 'https://github.com/zgymail/CommonLib.git', :tag => "#{s.version}" }
   s.requires_arc = true
   s.subspec 'Base' do |ds|
-    ds.frameworks = 'UIKit', 'Foundation','CoreGraphics'
-    ds.libraries = 'z', 'xml2'
-    ds.source_files = 'Base/*.{h,m,mm}','Base/**/*.{h,m,mm}'
-    ds.dependency 'ZipArchive', '~> 1.4.0'
-    ds.dependency 'ProtocolBuffers', '~> 1.9.7'
     ds.dependency 'Reachability'
     ds.dependency 'AFNetworking','~>2.5.4'
     ds.dependency 'KeychainItemWrapper','~> 1.2'
+    ds.frameworks = 'UIKit', 'Foundation','CoreGraphics'
+    ds.libraries = 'z', 'xml2'
+    ds.source_files = 'Base/*.{h,m,mm}','Base/**/*.{h,m,mm}'
   end
 
   s.subspec 'SpriteKit' do |ds|
-    ds.framework = 'SpriteKit'
+    ds.dependency 'ProtocolBuffers', '~> 1.9.7'
+    ds.dependency 'ZipArchive', '~> 1.4.0'
     ds.dependency 'CommonLib/Base'
+    ds.framework = 'SpriteKit'
     ds.source_files ='SpriteKit/*.{h,m,mm}'
   end
 
