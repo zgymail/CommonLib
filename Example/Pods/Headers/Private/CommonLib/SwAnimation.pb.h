@@ -1,1 +1,1 @@
-../../../../../Base/ResourceService/SwAnimation.pb.h
+../../../../../SpriteKit/ResourceService/SwAnimation.pb.h

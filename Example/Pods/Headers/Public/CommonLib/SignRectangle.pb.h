@@ -1,1 +1,1 @@
-../../../../../Base/ResourceService/SignRectangle.pb.h
+../../../../../SpriteKit/ResourceService/SignRectangle.pb.h

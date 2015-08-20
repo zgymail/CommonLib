@@ -1,1 +1,1 @@
-../../../../../Base/ResourceService/SwDesc.pb.h
+../../../../../SpriteKit/ResourceService/SwDesc.pb.h

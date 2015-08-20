@@ -8,7 +8,7 @@
 
 #import "NSString+Encoding.h"
 #import <CommonCrypto/CommonCryptor.h>
-
+#import <CommonCrypto/CommonDigest.h>
 //空字符串
 #define     LocalStr_None           @""
 
@@ -178,6 +178,25 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     }
     
     return [[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES];
+}
+
+
+-(NSString *)md5{
+    const char* str = [self UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(str, (CC_LONG)strlen(str), result);
+    NSMutableString *ret = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH*2];//
+    
+    for(int i = 0; i<CC_MD5_DIGEST_LENGTH; i++) {
+        [ret appendFormat:@"%02x",(unsigned int)result];
+    }
+    return ret;
+    
+    
+}
+-(NSString *)MD5{
+    NSString* str=[self md5];
+    return [str uppercaseString];
 }
 
 

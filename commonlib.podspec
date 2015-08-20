@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    CommonLib by all project,desc
                    DESC
-  s.homepage     = 'http://www.baidu.cn'
+  s.homepage     = 'https://github.com/zgymail/CommonLib/wiki'
   s.license      = 'MIT'
   s.author             = {'zgy_mail' => 'zgy_mail@126.com' }
   s.platform     = :ios,'7.0'
@@ -25,8 +25,6 @@ Pod::Spec.new do |s|
     ds.dependency 'ZipArchive', '~> 1.4.0'
     ds.dependency 'CommonLib/Base'
     ds.framework = 'SpriteKit'
-    ds.source_files ='SpriteKit/*.{h,m,mm}'
+    ds.source_files ='SpriteKit/*.{h,m,mm}','SpriteKit/**/*.{h,m,mm}'
   end
-
-  # s.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
 end

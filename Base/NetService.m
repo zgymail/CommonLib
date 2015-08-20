@@ -70,7 +70,6 @@
         _networkCheckDelegates=[NSHashTable hashTableWithOptions:NSPointerFunctionsWeakMemory];
         _domains=[NSMutableDictionary dictionary];
         [self createDomain:DEFAULT_QUEUEID];
-        [NSURLCache setSharedURLCache:[NetServiceDataCache standardDataCache]];
     }
     return self;
 }
@@ -448,8 +447,6 @@
     }else{
         imageURL=relaviteUrl;
     }
-   
-    
 //    NSLog(@"---------------------");
 //    NSLog(@"loadImage%@",imageURL);
 //    NSLog(@"---------------------");
@@ -497,27 +494,43 @@
         domain=_domains[DEFAULT_QUEUEID];
     }
     NSURL *URL = [NSURL URLWithString:url];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10000000];
-    
-    AFDownloadRequestOperation *op = [[AFDownloadRequestOperation alloc] initWithRequest:request storage:domain.storage shouldResume:NO];
-    op.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSData* data=operation.responseData;
+    /*
+    NSData* storageData=[domain.storage getStorageData:URL];
+    if(storageData){
         NSError* error;
-        id idata=[parse decode:data error:&error];
+        id idata=[parse decode:storageData error:&error];
         NetServiceResponseInfo* responseInfo=[[NetServiceResponseInfo alloc] init];
-        responseInfo.url=request.URL;
+        responseInfo.url=URL;
+        responseInfo.cache=true;
         if(error){
             completeBlock(nil,NetServiceResponseStatusParseFail,responseInfo);
         }else{
             completeBlock(idata,NetServiceResponseStatusSuccess,responseInfo);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"************************async image download failed");
-        completeBlock(nil,NetServiceResponseStatusFail,nil);
-    }];
-    [domain addOperation:op];
+    }else{
+     */
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        AFHTTPRequestOperation* op=[[AFHTTPRequestOperation alloc] initWithRequest:request];
+        op.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+            NSData* data=responseObject;
+            NSError* error;
+            id idata=[parse decode:data error:&error];
+            NetServiceResponseInfo* responseInfo=[[NetServiceResponseInfo alloc] init];
+            responseInfo.cache=false;
+            responseInfo.url=operation.request.URL;
+            if(error){
+                completeBlock(nil,NetServiceResponseStatusParseFail,responseInfo);
+            }else{
+                //[domain.storage saveStorageData:storageData url:URL];
+                completeBlock(idata,NetServiceResponseStatusSuccess,responseInfo);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+            NSLog(@"************************async image download failed%@",error.description);
+            completeBlock(nil,NetServiceResponseStatusFail,nil);
+        }];
+        [domain addOperation:op];
+   // }
 }
 
 @end
@@ -606,29 +619,4 @@
     return byteData;
 }
 
-@end
-@implementation NetServiceDataCache
-+ (instancetype)standardDataCache{
-    static NetServiceDataCache *_standardDataCache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _standardDataCache = [[NetServiceDataCache alloc]
-                             initWithMemoryCapacity:(2 * 1024 * 1024)
-                             diskCapacity:(100 * 1024 * 1024)
-                             diskPath:nil];
-    });
-    return _standardDataCache;
-}
-- (NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request{
-    NSCachedURLResponse *cachedResponse = [super cachedResponseForRequest:request];
-    if (cachedResponse) {
-       
-    }
-    return cachedResponse;
-}
-
-- (void)storeCachedResponse:(NSCachedURLResponse *)cachedResponse forRequest:(NSURLRequest *)request{
-    [super storeCachedResponse:cachedResponse forRequest:request];
-    NSLog(@"========storeCachedResponse:");
-}
 @end

@@ -48,23 +48,17 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
-// CommonLib
-#define COCOAPODS_POD_AVAILABLE_CommonLib
-#define COCOAPODS_VERSION_MAJOR_CommonLib 0
-#define COCOAPODS_VERSION_MINOR_CommonLib 2
-#define COCOAPODS_VERSION_PATCH_CommonLib 0
-
 // CommonLib/Base
 #define COCOAPODS_POD_AVAILABLE_CommonLib_Base
 #define COCOAPODS_VERSION_MAJOR_CommonLib_Base 0
 #define COCOAPODS_VERSION_MINOR_CommonLib_Base 2
-#define COCOAPODS_VERSION_PATCH_CommonLib_Base 0
+#define COCOAPODS_VERSION_PATCH_CommonLib_Base 1
 
 // CommonLib/SpriteKit
 #define COCOAPODS_POD_AVAILABLE_CommonLib_SpriteKit
 #define COCOAPODS_VERSION_MAJOR_CommonLib_SpriteKit 0
 #define COCOAPODS_VERSION_MINOR_CommonLib_SpriteKit 2
-#define COCOAPODS_VERSION_PATCH_CommonLib_SpriteKit 0
+#define COCOAPODS_VERSION_PATCH_CommonLib_SpriteKit 1
 
 // KeychainItemWrapper
 #define COCOAPODS_POD_AVAILABLE_KeychainItemWrapper

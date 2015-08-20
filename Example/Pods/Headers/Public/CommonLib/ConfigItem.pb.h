@@ -1,1 +1,1 @@
-../../../../../Base/ResourceService/ConfigItem.pb.h
+../../../../../SpriteKit/ResourceService/ConfigItem.pb.h

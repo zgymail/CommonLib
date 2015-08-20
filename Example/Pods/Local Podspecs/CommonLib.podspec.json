@@ -1,6 +1,6 @@
 {
   "name": "CommonLib",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "summary": "CommonLib by all project",
   "description": "                   CommonLib by all project,desc\n",
   "homepage": "http://www.baidu.cn",
@@ -13,12 +13,23 @@
   },
   "source": {
     "git": "https://github.com/zgymail/CommonLib.git",
-    "tag": "0.2.0"
+    "tag": "0.2.1"
   },
   "requires_arc": true,
   "subspecs": [
     {
       "name": "Base",
+      "dependencies": {
+        "Reachability": [
+
+        ],
+        "AFNetworking": [
+          "~>2.5.4"
+        ],
+        "KeychainItemWrapper": [
+          "~> 1.2"
+        ]
+      },
       "frameworks": [
         "UIKit",
         "Foundation",
@@ -31,34 +42,26 @@
       "source_files": [
         "Base/*.{h,m,mm}",
         "Base/**/*.{h,m,mm}"
-      ],
-      "dependencies": {
-        "ZipArchive": [
-          "~> 1.4.0"
-        ],
-        "ProtocolBuffers": [
-          "~> 1.9.7"
-        ],
-        "Reachability": [
-
-        ],
-        "AFNetworking": [
-          "~>2.5.4"
-        ],
-        "KeychainItemWrapper": [
-          "~> 1.2"
-        ]
-      }
+      ]
     },
     {
       "name": "SpriteKit",
-      "frameworks": "SpriteKit",
       "dependencies": {
+        "ProtocolBuffers": [
+          "~> 1.9.7"
+        ],
+        "ZipArchive": [
+          "~> 1.4.0"
+        ],
         "CommonLib/Base": [
 
         ]
       },
-      "source_files": "SpriteKit/*.{h,m,mm}"
+      "frameworks": "SpriteKit",
+      "source_files": [
+        "SpriteKit/*.{h,m,mm}",
+        "SpriteKit/**/*.{h,m,mm}"
+      ]
     }
   ]
 }

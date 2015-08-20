@@ -14,4 +14,7 @@
 
 - (NSString *)base64Encode;
 - (NSString *)base64Decode;
+
+-(NSString *)md5;
+-(NSString *)MD5;
 @end

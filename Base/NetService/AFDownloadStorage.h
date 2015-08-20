@@ -7,7 +7,8 @@
 @interface AFDownloadStorage : NSObject
 @property(nonatomic,strong)NSString* cachePath;
 - (instancetype)initWithStoragePath:(NSString*)storagePath;
--(NSString *)getStorageFile;
+-(NSString *)getStorageDataFileWithUrl:(NSURL*)urlpath;
 -(void)clear;
-
+-(NSData*)getStorageData:(NSURL*)url;
+-(void)saveStorageData:(NSData*)data url:(NSURL*)url;
 @end

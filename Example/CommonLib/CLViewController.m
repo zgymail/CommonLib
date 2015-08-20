@@ -40,13 +40,17 @@
     }];
 }
 -(void)testNetService{
-    [[NetService shareInstance] loadImage:@"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_81d09391.png" complete:^(UIImage *image) {
-        NSLog(@"image: %@" , image);
-    }];
+    /*
+   [[NetService shareInstance] loadImage:@"http://120.26.110.202:8080/security/data/1.jpg?v=2299" complete:^(UIImage *image) {
+       NSLog(@"image %@",image);
+   }];
+*/
     
-    [[NetService shareInstance] loadData:@"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_81d09391.png" complete:^(id data, NetServiceResponseStatus responseStatus, NetServiceResponseInfo *responseInfo) {
-       // NSLog(@"data: %@" , data);
+    
+    [[NetService shareInstance] loadData:@"http://192.168.1.109:8080/ssa/upload/iphone/ChapterSuits.dat" complete:^(id data, NetServiceResponseStatus responseStatus, NetServiceResponseInfo *responseInfo) {
+        NSLog(@"data: %@" , data);
     } parse:[[NetServiceBaseParse alloc] init]];
+
 }
 
 - (void)didReceiveMemoryWarning

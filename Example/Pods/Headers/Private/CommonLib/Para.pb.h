@@ -1,1 +1,1 @@
-../../../../../Base/ResourceService/Para.pb.h
+../../../../../SpriteKit/ResourceService/Para.pb.h

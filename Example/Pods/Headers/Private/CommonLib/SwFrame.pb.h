@@ -1,1 +1,1 @@
-../../../../../Base/ResourceService/SwFrame.pb.h
+../../../../../SpriteKit/ResourceService/SwFrame.pb.h

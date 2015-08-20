@@ -66,10 +66,30 @@
 #pragma mark - cache path
 
 
--(NSString *)getStorageFile{
-    NSString *fileName = [self loadSequence];
+-(NSString *)getStorageDataFileWithUrl:(NSURL*)url{
+    //NSString *fileName = [self loadSequence];
+    NSString* fileName=[url.relativePath stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    fileName=[fileName stringByReplacingOccurrencesOfString:@":" withString:@"_"];
     return [_cacheFullPath stringByAppendingPathComponent:fileName];
 }
+
+-(NSData*)getStorageData:(NSURL*)url{
+    NSString* path=[self getStorageDataFileWithUrl:url];
+    NSFileManager* fmgr=[NSFileManager new];
+    if ([fmgr fileExistsAtPath:path]) {
+        return [NSData dataWithContentsOfFile:path];
+    }
+    return nil;
+}
+
+-(void)saveStorageData:(NSData*)data url:(NSURL*)url{
+    NSString* file=[self getStorageDataFileWithUrl:url];
+   [data writeToFile:file atomically:NO];
+}
+
+
+
+
 
 
 

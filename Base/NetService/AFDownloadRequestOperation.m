@@ -62,11 +62,11 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
     }
 }
 
-- (id)initWithRequest:(NSURLRequest *)urlRequest  storage:(AFDownloadStorage*)storage shouldResume:(BOOL)shouldResume {
+- (id)initWithRequest:(NSURLRequest *)urlRequest  storage:(AFDownloadStorage*)storage shouldResume:(BOOL)shouldResume{
     if ((self = [super initWithRequest:urlRequest])) {
         _shouldResume = shouldResume;
  
-        self.tempPath = [storage getStorageFile];
+        self.tempPath = [storage getStorageDataFileWithUrl:urlRequest.URL];
         // Download is saved into a temorary file and renamed upon completion.
         NSString *tempPath = [self tempPath];
 
@@ -267,4 +267,5 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
         });
     }
 }
+
 @end

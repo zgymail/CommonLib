@@ -85,6 +85,3 @@ typedef void (^NetServiceSendDataCompleteBlock)(id data,NetServiceResponseStatus
 @interface NetServiceDesJsonParse : NSObject<NetServiceParseDelegate>
 @property(nonatomic,assign)NSJSONReadingOptions readingOptions;
 @end
-@interface NetServiceDataCache : NSURLCache
-+ (instancetype)standardDataCache;
-@end
