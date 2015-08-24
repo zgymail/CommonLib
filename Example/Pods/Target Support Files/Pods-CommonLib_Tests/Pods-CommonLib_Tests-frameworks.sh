@@ -50,7 +50,6 @@ code_sign() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'AFNetworking.framework'
   install_framework 'CommonLib.framework'
-  install_framework 'KeychainItemWrapper.framework'
   install_framework 'ProtocolBuffers.framework'
   install_framework 'Reachability.framework'
   install_framework 'ZipArchive.framework'
@@ -58,7 +57,6 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'AFNetworking.framework'
   install_framework 'CommonLib.framework'
-  install_framework 'KeychainItemWrapper.framework'
   install_framework 'ProtocolBuffers.framework'
   install_framework 'Reachability.framework'
   install_framework 'ZipArchive.framework'

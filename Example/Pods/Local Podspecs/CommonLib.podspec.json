@@ -1,9 +1,9 @@
 {
   "name": "CommonLib",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "summary": "CommonLib by all project",
   "description": "                   CommonLib by all project,desc\n",
-  "homepage": "http://www.baidu.cn",
+  "homepage": "https://github.com/zgymail/CommonLib/wiki",
   "license": "MIT",
   "authors": {
     "zgy_mail": "zgy_mail@126.com"
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/zgymail/CommonLib.git",
-    "tag": "0.2.1"
+    "tag": "0.2.2"
   },
   "requires_arc": true,
   "subspecs": [
@@ -25,9 +25,6 @@
         ],
         "AFNetworking": [
           "~>2.5.4"
-        ],
-        "KeychainItemWrapper": [
-          "~> 1.2"
         ]
       },
       "frameworks": [
