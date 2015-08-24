@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    CommonLib by all project,desc
                    DESC
-  s.homepage     = 'https://github.com/zgymail/commonLib/wiki'
+  s.homepage     = 'https://github.com/zgymail/CommonLib/wiki'
   s.license      = 'MIT'
   s.author             = {'zgy_mail' => 'zgy_mail@126.com' }
   s.platform     = :ios,'7.0'
-  s.source       =  { :git => 'https://github.com/zgymail/commonLib.git', :tag => "#{s.version}" }
+  s.source       =  { :git => 'https://github.com/zgymail/CommonLib.git', :tag => "#{s.version}" }
   s.requires_arc = true
   s.subspec 'Base' do |ds|
     ds.dependency 'Reachability'
