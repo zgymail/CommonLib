@@ -149,10 +149,12 @@
     NSString *furl=[[NSString alloc] initWithFormat:@"%@%@%@",_rootUrl,_serviceUrl,serviceName];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     NSDictionary *parameters = @{@"data": dataStr};
     [manager POST:furl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error;
-        NSData* responseData=operation.responseData;
+        NSData* responseData= [NSData dataFromBase64String:operation.responseString];
         id data = [parse decode:responseData error:&error];
         if([delegate respondsToSelector:@selector(receiveData:data:responseStatus:)]){
             if(error){
@@ -177,9 +179,11 @@
 //    NSLog(@"%@%@%@",_rootUrl,_serviceUrl,serviceName);
 //    NSLog(@"---------------------");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     [manager GET:furl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error;
-        NSData* responseData=operation.responseData;
+        NSData* responseData= [NSData dataFromBase64String:operation.responseString];
         id data = [parse decode:responseData error:&error];
         if([delegate respondsToSelector:@selector(receiveData:data:responseStatus:)]){
             if(error){
@@ -203,6 +207,8 @@
 //    NSLog(@"%@%@%@",_rootUrl,_serviceUrl,serviceName);
 //    NSLog(@"---------------------");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     NSDictionary *parameters=nil;
     if(data!=nil){
         NSError *error;
@@ -238,7 +244,7 @@
         }
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error;
-        NSData* responseData=operation.responseData;
+         NSData* responseData= [NSData dataFromBase64String:operation.responseString];
         id data = [parse decode:responseData error:&error];
         if([delegate respondsToSelector:@selector(receiveData:data:responseStatus:)]){
             if(error){
@@ -265,9 +271,11 @@
 //    NSLog(@"%@%@%@",_rootUrl,_serviceUrl,serviceName);
 //    NSLog(@"---------------------");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     [manager GET:furl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error;
-        NSData* responseData=operation.responseData;
+        NSData* responseData= [NSData dataFromBase64String:operation.responseString];
         id data =[parse decode:responseData error:&error];
         NetServiceResponseInfo* responseInfo=[[NetServiceResponseInfo alloc] init];
         if(error){
@@ -301,10 +309,12 @@
     NSString *dataStr=[byteData base64EncodedString];
     NSString *furl=[[NSString alloc] initWithFormat:@"%@%@%@",_rootUrl,_serviceUrl,serviceName];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     NSDictionary *parameters = @{@"data": dataStr};
     [manager POST:furl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error;
-        NSData* responseData=operation.responseData;
+        NSData* responseData= [NSData dataFromBase64String:operation.responseString];
         id data =[parse decode:responseData error:&error];
         NetServiceResponseInfo* responseInfo=[[NetServiceResponseInfo alloc] init];
         if(error){
@@ -324,6 +334,8 @@
     }
     NSString *furl=[[NSString alloc] initWithFormat:@"%@%@%@",_rootUrl,_serviceUrl,serviceName];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     NSDictionary *parameters=nil;
     if(data!=nil){
         NSError *error;
@@ -359,7 +371,7 @@
         }
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error;
-        NSData* responseData=operation.responseData;
+        NSData* responseData= [NSData dataFromBase64String:operation.responseString];
         id data = [parse decode:responseData error:&error];
         NetServiceResponseInfo* responseInfo=[[NetServiceResponseInfo alloc] init];
         if(error){
@@ -509,7 +521,7 @@
         }
     }else{
      */
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60];
         AFHTTPRequestOperation* op=[[AFHTTPRequestOperation alloc] initWithRequest:request];
         op.responseSerializer = [AFHTTPResponseSerializer serializer];
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){

@@ -22,7 +22,10 @@
 #define RADIAN45 45*M_PI/180
 #define RADIAN30 30*M_PI/180
 #define RADIAN15 15*M_PI/180
-#define RADIAN225 22.5*M_PI/180
+#define RADIAN1 1*M_PI/180
+#define RADIAN5 5*M_PI/180
+#define RADIAN10 10*M_PI/180
+#define RADIAN22DOT5 22.5*M_PI/180
 enum SCGeomeryLeftOrRight {
     Left, Right, Online
 };

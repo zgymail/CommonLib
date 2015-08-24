@@ -17,6 +17,15 @@ SYNTHESIZE_SINGLETON_FOR_IMPL(FileService)
     self = [super init];
     if (self) {
         _documentDir=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        _currentDir=@"cache";
+        NSString* _currentDirPath=[NSString stringWithFormat:@"%@/%@",_documentDir,_currentDir];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error;
+        if (![fileManager fileExistsAtPath:_currentDirPath]){
+            [fileManager createDirectoryAtPath:_currentDirPath
+                   withIntermediateDirectories:YES attributes:nil
+                                         error:&error];
+        }
     }
     return self;
 }
