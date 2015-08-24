@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'CommonLib'
-  s.version      = '0.2.1'
+  s.version      = '0.2.2'
   s.summary      = 'CommonLib by all project'
   s.description  = <<-DESC
                    CommonLib by all project,desc

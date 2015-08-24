@@ -12,6 +12,8 @@
 
 typedef void (^ResourceServiceLoadRemoteResourceCompleteBlock)(bool success);
 @interface ResourceAnimationData:NSObject
+@property(nonatomic,strong)NSString* identity;
+@property(nonatomic,strong)NSString* dimension;
 @property(nonatomic,strong)NSDictionary* paras;
 @property(nonatomic,strong)NSDictionary* rects;
 @property(nonatomic,assign)CGFloat width;
@@ -26,6 +28,8 @@ typedef void (^ResourceServiceLoadRemoteResourceCompleteBlock)(bool success);
 -(UIBezierPath*)getPath:(NSString*)tag closed:(bool)closed;
 -(CGRect)getRect:(NSString*)tag;
 -(CGPoint)getPoint:(NSString*)tag;
+
+-(ResourceAnimationData*)getCompsiteAnimationData:(NSString*)compsiteName;
 @end
 @interface ResourceCompsiteAnimationData :NSObject
 @property(nonatomic,strong)NSString* name;
@@ -46,7 +50,6 @@ typedef void (^ResourceServiceLoadRemoteResourceCompleteBlock)(bool success);
 @interface ResourceCompsiteAnimation:ResourceAnimation
 @property(nonatomic,strong)NSArray* compsiteAnimations;
 -(void)addCompsiteTexture:(NSString*)compsiteName frameIndex:(NSInteger)frameIndex node:(SKNode*)node;
--(ResourceAnimationData*)getCompsiteAnimationData:(NSString*)compsiteName;
 @end
 @interface ResourceTexture:NSObject
 @property(nonatomic,strong)SKTexture* texture;

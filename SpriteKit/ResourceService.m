@@ -285,6 +285,8 @@ SYNTHESIZE_SINGLETON_FOR_IMPL(ResourceService)
         return nil;
     }
     ResourceAnimationData* ret=[[ResourceAnimationData alloc] init];
+    ret.identity=identity;
+    ret.dimension=name;
     ret.width=animation.width;
     ret.height=animation.height;
     ret.scaleX=animation.scaleX/100.0;
@@ -462,7 +464,7 @@ SYNTHESIZE_SINGLETON_FOR_IMPL(ResourceService)
         compsiteAnimationSprite.yScale=tscaley;
         compsiteAnimationSprite.position=CGPointMake(sourceSignRect.origin.x-targetSignRect.origin.x*tscalex/targetAnimationData.scaleX,sourceSignRect.origin.y-targetSignRect.origin.y*tscaley/targetAnimationData.scaleY);
         
-        [compsiteAnimationSprite runAction:targetResourceAnimation.action];
+        [compsiteAnimationSprite runAction:[SKAction repeatActionForever:targetResourceAnimation.action]];
         [compsiteAnimations addObject:targetResourceAnimation];
     }
     
@@ -593,6 +595,34 @@ SYNTHESIZE_SINGLETON_FOR_IMPL(ResourceService)
     }
     return CGPointZero;
 }
+
+-(ResourceAnimationData*)getCompsiteAnimationData:(NSString*)compsiteName{
+    ResourceCompsiteAnimationData* data=_compsiteAnimations[compsiteName];
+    if(data==nil){
+        NSLog(@"ResourceCompsiteAnimation::getCompsiteAnimationData compsite name is %@",compsiteName);
+        return nil;
+    }
+    ResourceAnimationData* compsiteAnimationData=[[ResourceService sharedInstance] getAnimationData:data.targetRid name:data.targetDimension];
+    if (compsiteAnimationData==nil) {
+        NSLog(@"ResourceCompsiteAnimation::getCompsiteAnimationData compsite animation is null,compsite name is %@",compsiteName);
+        return nil;
+    }
+    CGFloat tscalex=data.targetScaleX/100.0;
+    CGFloat tscaley=data.targetScaleY/100.0;
+    CGFloat xscale=tscalex/compsiteAnimationData.scaleX;
+    CGFloat yscale=tscaley/compsiteAnimationData.scaleY;
+    NSDictionary* rects=compsiteAnimationData.rects;
+    NSMutableDictionary* nrects=[[NSMutableDictionary alloc] init];
+    [rects enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        CGRect rect=((NSValue*)obj).CGRectValue;
+        CGRect nrect=CGRectMake(rect.origin.x*xscale,rect.origin.y*yscale,rect.size.width*xscale, rect.size.height*yscale);
+        nrects[key]=[NSValue valueWithCGRect:nrect];
+    }];
+    compsiteAnimationData.rects=nrects;
+    compsiteAnimationData.scaleX=data.targetScaleX;
+    compsiteAnimationData.scaleY=data.targetScaleY;
+    return compsiteAnimationData;
+}
 @end
 @implementation ResourceAnimation
 
@@ -642,37 +672,6 @@ SYNTHESIZE_SINGLETON_FOR_IMPL(ResourceService)
     compsiteAnimationSprite.position=CGPointMake(sourceSignRect.origin.x-targetSignRect.origin.x*tscalex/targetAnimationData.scaleX,(mainAnimationRealHeight-sourceSignRect.origin.y)-(targetAnimationData.scaleHeight-targetSignRect.origin.y)*tscaley/targetAnimationData.scaleY);
     compsiteAnimationSprite.texture=targetResourceTexture.texture;
 }
--(ResourceAnimationData*)getCompsiteAnimationData:(NSString*)compsiteName{
-    NSDictionary* compsiteAnimations=  self.animationData.compsiteAnimations;
-    ResourceCompsiteAnimationData* data=compsiteAnimations[compsiteName];
-    if(data==nil){
-        NSLog(@"ResourceCompsiteAnimation::getCompsiteSignRectangle compsite name is %@",compsiteName);
-        return nil;
-    }
-    ResourceAnimationData* compsiteAnimationData=[[ResourceService sharedInstance] getAnimationData:data.targetRid name:data.targetDimension];
-    if (compsiteAnimationData==nil) {
-        NSLog(@"ResourceCompsiteAnimation::getCompsiteSignRectangle compsite animation is null,compsite name is %@",compsiteName);
-        return nil;
-    }
-    CGFloat tscalex=data.targetScaleX/100.0;
-    CGFloat tscaley=data.targetScaleY/100.0;
-    CGFloat xscale=tscalex/compsiteAnimationData.scaleX;
-    CGFloat yscale=tscaley/compsiteAnimationData.scaleY;
-    NSDictionary* rects=compsiteAnimationData.rects;
-    NSMutableDictionary* nrects=[[NSMutableDictionary alloc] init];
-    [rects enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-         CGRect rect=((NSValue*)obj).CGRectValue;
-         CGRect nrect=CGRectMake(rect.origin.x*xscale,rect.origin.y*yscale,rect.size.width*xscale, rect.size.height*yscale);
-         nrects[key]=[NSValue valueWithCGRect:nrect];
-    }];
-    compsiteAnimationData.rects=nrects;
-    compsiteAnimationData.scaleX=data.targetScaleX;
-    compsiteAnimationData.scaleY=data.targetScaleY;
-    return compsiteAnimationData;
-}
-
-
-
 @end
 @implementation ResourceTexture
 
