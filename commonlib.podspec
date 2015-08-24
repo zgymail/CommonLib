@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.subspec 'Base' do |ds|
     ds.dependency 'Reachability'
     ds.dependency 'AFNetworking','~>2.5.4'
-    ds.dependency 'KeychainItemWrapper','~> 1.2'
     ds.frameworks = 'UIKit', 'Foundation','CoreGraphics'
     ds.libraries = 'z', 'xml2'
     ds.source_files = 'Base/*.{h,m,mm}','Base/**/*.{h,m,mm}'
