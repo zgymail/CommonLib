@@ -23,7 +23,8 @@ Pod::Spec.new do |s|
     ds.dependency 'ProtocolBuffers', '~> 1.9.7'
     ds.dependency 'ZipArchive', '~> 1.4.0'
     ds.dependency 'CommonLib/Base'
-    ds.framework = 'SpriteKit'
+    ds.framework = 'SpriteKit','UIKit', 'Foundation','CoreGraphics'
+    ds.libraries = 'z', 'xml2'
     ds.source_files ='SpriteKit/*.{h,m,mm}','SpriteKit/**/*.{h,m,mm}'
   end
 end
